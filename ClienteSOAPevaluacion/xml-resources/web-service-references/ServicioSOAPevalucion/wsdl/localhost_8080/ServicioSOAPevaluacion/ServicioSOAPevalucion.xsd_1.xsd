@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://ConsultasSOAP/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ConsultasSOAP/">
+
+<xs:element name="obtenerGananciaChofer" type="tns:obtenerGananciaChofer"/>
+
+<xs:element name="obtenerGananciaChoferResponse" type="tns:obtenerGananciaChoferResponse"/>
+
+<xs:element name="obtenerGananciaPropietario" type="tns:obtenerGananciaPropietario"/>
+
+<xs:element name="obtenerGananciaPropietarioResponse" type="tns:obtenerGananciaPropietarioResponse"/>
+
+<xs:element name="obtenerIngresosPorJornada" type="tns:obtenerIngresosPorJornada"/>
+
+<xs:element name="obtenerIngresosPorJornadaResponse" type="tns:obtenerIngresosPorJornadaResponse"/>
+
+<xs:element name="obtenerMejorChofer" type="tns:obtenerMejorChofer"/>
+
+<xs:element name="obtenerMejorChoferResponse" type="tns:obtenerMejorChoferResponse"/>
+
+<xs:element name="obtenerTaxiMasRentable" type="tns:obtenerTaxiMasRentable"/>
+
+<xs:element name="obtenerTaxiMasRentableResponse" type="tns:obtenerTaxiMasRentableResponse"/>
+
+<xs:element name="obtenerTotalCarrerasPorTaxi" type="tns:obtenerTotalCarrerasPorTaxi"/>
+
+<xs:element name="obtenerTotalCarrerasPorTaxiResponse" type="tns:obtenerTotalCarrerasPorTaxiResponse"/>
+
+<xs:element name="obtenerTotalRecaudadoTaxi" type="tns:obtenerTotalRecaudadoTaxi"/>
+
+<xs:element name="obtenerTotalRecaudadoTaxiResponse" type="tns:obtenerTotalRecaudadoTaxiResponse"/>
+
+<xs:complexType name="obtenerTotalRecaudadoTaxi">
+<xs:sequence>
+<xs:element name="placa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerTotalRecaudadoTaxiResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerGananciaChofer">
+<xs:sequence>
+<xs:element name="cedulaChofer" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerGananciaChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerMejorChofer">
+<xs:sequence>
+<xs:element name="cedulaPropietario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerMejorChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:chofer" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="chofer">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"/>
+<xs:element name="cedula" type="xs:string" minOccurs="0"/>
+<xs:element name="jornadas" type="tns:jornada" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="licencia" type="xs:string" minOccurs="0"/>
+<xs:element name="nombres" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="jornada">
+<xs:sequence>
+<xs:element name="carreras" type="tns:carrera" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idJornada" type="xs:string" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="carrera">
+<xs:sequence>
+<xs:element name="destino" type="xs:string" minOccurs="0"/>
+<xs:element name="fechaHora" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idCarrera" type="xs:string" minOccurs="0"/>
+<xs:element name="origen" type="xs:string" minOccurs="0"/>
+<xs:element name="valorCarrera" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerIngresosPorJornada">
+<xs:sequence>
+<xs:element name="placa" type="xs:string" minOccurs="0"/>
+<xs:element name="jornada" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerIngresosPorJornadaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerTotalCarrerasPorTaxi">
+<xs:sequence>
+<xs:element name="placa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerTotalCarrerasPorTaxiResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerTaxiMasRentable">
+<xs:sequence>
+<xs:element name="cedulaPropietario" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerTaxiMasRentableResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:taxi" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="taxi">
+<xs:sequence>
+<xs:element name="anio" type="xs:int"/>
+<xs:element name="choferes" type="tns:chofer" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idTaxi" type="xs:string" minOccurs="0"/>
+<xs:element name="marca" type="xs:string" minOccurs="0"/>
+<xs:element name="modelo" type="xs:string" minOccurs="0"/>
+<xs:element name="placa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerGananciaPropietario">
+<xs:sequence>
+<xs:element name="cedula" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerGananciaPropietarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
